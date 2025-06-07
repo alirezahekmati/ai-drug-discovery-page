@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Drug Discovery</title>
+  </head>
+  <body>
+    <nav class="main-nav">
+      <a href="/index.html" class="nav-brand">SynapseAI</a>
+      <div class="nav-links">
+        <a href="/index.html" class="nav-link active" id="home-link">Home</a>
+        <a href="/about.html" class="nav-link">About</a>
+        <a href="/contact.html" class="nav-link">Contact</a>
+      </div>
+    </nav>
+    <!-- This div is the target for our tsParticles background -->
+    <div id="tsparticles"></div>
+
+    <!-- This is the main container for our content sections -->
+    <main id="page-container">
+      <!-- Section 0: Landing Page -->
+      <section class="fullscreen-section" id="section-0">
+        <div class="content-wrapper">
+          <h1 class="title">From Prompt to Protein</h1>
+          <p class="subtitle">The Future of AI Drug Discovery</p>
+          <div class="genesis-particle"></div>
+          <div class="scroll-down-indicator">↓</div>
+        </div>
+      </section>
+
+      <!-- We will add more sections here later -->
+      <!-- Section 1: Target Identification -->
+      <section class="fullscreen-section" id="section-1">
+        <div class="content-wrapper">
+          <h1>Our Artificial intelligence (AI) will find targets</h1>
+          <p>In this case for Alzheimer's disease</p>
+          <div class="terminal-window">
+            <div class="terminal-header">
+              <span></span><span></span><span></span>
+            </div>
+            <div class="terminal-body">
+              <p id="terminal-text"></p>
+            </div>
+          </div>
+          <div class="targets-container">
+            <!-- Gene targets will be dynamically added here by GSAP -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: De Novo Protein Design -->
+      <section class="fullscreen-section" id="section-2">
+        <div class="content-wrapper">
+          <h1>It can get Structure of targets from databases 
+            <br></h1>
+            <p>or even generate them from scratch using alphafold</p>
+          <div class="viewer-container">
+            <h2 class="viewer-title">
+              Target: <span class="highlight">APOE4</span>
+            </h2>
+            <div id="protein-viewer"></div>
+            <p class="viewer-subtitle">Visualizing Target Structure</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: In Silico Validation -->
+      <section class="fullscreen-section" id="section-3">
+        <div class="content-wrapper">
+          <h1>Our model will design proteins that bind to your targets.</h1>
+          <div class="validation-container">
+            <h2 class="validation-title">In Silico Validation Results</h2>
+            <p class="validation-subtitle">
+              Binder Candidate #A7-22 vs Target
+              <span class="highlight">APOE4</span>
+            </p>
+            <canvas id="validation-chart"></canvas>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Protocol Generation -->
+      <section class="fullscreen-section" id="section-4">
+        
+        <div class="protocol-container">
+          
+          <div class="protocol-header">
+            <span class="protocol-title">SYNAPSE_AI_PROTOCOL_GENERATOR</span>
+            <span class="protocol-status"
+              >STATUS: <span class="highlight-green">COMPLETE</span></span
+            >
+          </div>
+          <div class="protocol-body">
+            <pre><code><!-- Protocol text will be typed here --></code></pre>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="./src/main.js"></script>
+  </body>
+</html>

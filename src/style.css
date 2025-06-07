@@ -1,0 +1,447 @@
+
+/* Import a futuristic font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;700&display=swap');
+
+/* --- Global Resets & Body Styling --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background-color: #0d0d1a; /* Dark navy/charcoal */
+  color: #e0e0e0; /* Light grey text */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+/* --- tsParticles Background Container --- */
+#tsparticles {
+  position: fixed; /* Stays in the background */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Place it behind all other content */
+}
+
+/* --- Main Content Styling --- */
+#page-container {
+  position: relative;
+  z-index: 1;
+}
+
+.fullscreen-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Make section take full viewport height */
+  width: 100%;
+  text-align: center;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem; /* Space between elements */
+  min-width: 900px;
+}
+
+/* --- Landing Page Specific Elements --- */
+.title {
+  font-size: 4rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5), 0 0 20px rgba(0, 255, 255, 0.3); /* Cyan glow */
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #a0a0c0; /* Muted lavender */
+}
+
+.genesis-particle {
+  width: 20px;
+  height: 20px;
+  background-color: #00ffff; /* Bright cyan */
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+  animation: pulse 2s infinite ease-in-out;
+}
+
+.scroll-down-indicator {
+  font-size: 2rem;
+  color: #00ffff;
+  animation: bounce 1.5s infinite;
+}
+
+/* --- Keyframe Animations --- */
+
+/* For the pulsing genesis particle */
+@keyframes pulse {
+  0% {
+    transform: scale(0.95);
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+  }
+  50% {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff, 0 0 75px #00ffff;
+  }
+  100% {
+    transform: scale(0.95);
+    box-shadow: 0 0 15px #00ffff, 0 0 30px #00ffff, 0 0 45px #00ffff;
+  }
+}
+
+/* For the bouncing scroll indicator */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-20px);
+  }
+  60% {
+    transform: translateY(-10px);
+  }
+}
+
+/* --- Section 1: Target Identification Styling --- */
+
+.terminal-window {
+  background-color: rgba(25, 25, 40, 0.85); /* Semi-transparent dark blue */
+  border: 1px solid #4a4a6a;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 1200px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px); /* Frosty glass effect */
+  /* Initially invisible, GSAP will animate it */
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.terminal-header {
+  background-color: #33334a;
+  padding: 8px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.terminal-header span {
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.terminal-header span:nth-child(1) { background-color: #ff5f56; } /* Red */
+.terminal-header span:nth-child(2) { background-color: #ffbd2e; } /* Yellow */
+.terminal-header span:nth-child(3) { background-color: #27c93f; } /* Green */
+
+.terminal-body {
+  padding: 20px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1rem;
+  min-height: 50px;
+  text-align: left;
+}
+
+#terminal-text::after {
+  content: '_';
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  from, to { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.targets-container {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gene-target {
+  border: 1px solid #00ffff;
+  color: #00ffff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+  /* Initially invisible for staggered animation */
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+
+.viewer-container {
+  width: 90%;
+  min-width: 900px;
+  max-width: 1100px;
+  background-color: rgba(25, 25, 40, 0.85);
+  border: 1px solid #4a4a6a;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  /* Initially invisible */
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.viewer-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.viewer-title .highlight {
+  color: #ff00ff; /* Magenta for the selected target */
+  text-shadow: 0 0 8px #ff00ff;
+}
+
+#protein-viewer {
+  position: relative;
+    min-width: 600px;
+  /* width: 100%; */
+  height: 60vh; /* Responsive height */
+  background-color: #000;
+  border-radius: 5px;
+}
+
+.viewer-subtitle {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #a0a0c0;
+}
+
+.validation-container {
+  width: 90%;
+  max-width: 700px;
+  padding: 2rem;
+  background-color: rgba(25, 25, 40, 0.85);
+  border: 1px solid #4a4a6a;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(5px);
+  /* Initially invisible */
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+.validation-title {
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.validation-subtitle {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 1.1rem;
+  color: #a0a0c0;
+}
+
+.validation-subtitle .highlight {
+  color: #ff00ff;
+  font-weight: bold;
+}
+
+
+
+/* --- Section 4: Protocol Generation Styling --- */
+
+.protocol-container {
+  width: 90%;
+  max-width: 800px;
+  background-color: #0A0A10; /* Even darker for a code editor feel */
+  border: 1px solid #4a4a6a;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: 'Courier New', Courier, monospace;
+  /* Initially invisible */
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.protocol-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #33334a;
+  padding: 12px 20px;
+  border-top-left-radius: 7px;
+  border-top-right-radius: 7px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.protocol-title {
+  color: #e0e0e0;
+  font-weight: bold;
+}
+
+.protocol-status .highlight-green {
+  color: #27c93f; /* Bright green */
+  font-weight: bold;
+  text-shadow: 0 0 5px #27c93f;
+}
+
+.protocol-body {
+  padding: 20px;
+  height: 60vh;
+  overflow-y: auto;
+  text-align: left;
+  /* Custom scrollbar for aesthetics */
+  scrollbar-width: thin;
+  scrollbar-color: #4a4a6a #0A0A10;
+}
+
+.protocol-body pre {
+  margin: 0;
+  white-space: pre-wrap; /* Allow text to wrap */
+  word-wrap: break-word;
+}
+
+.protocol-body code {
+  color: #e0e0e0;
+  font-size: 1rem;
+}
+
+/* Blinking cursor for the protocol text */
+.protocol-body code::after {
+  content: '█';
+  animation: blink 1s step-end infinite;
+}
+
+/* --- Refinements for Protocol Section --- */
+
+/* Style for the <strong> tag we will add with JS */
+.protocol-body code strong {
+  color: #56d8ff; /* A slightly different, vibrant cyan for emphasis */
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(86, 216, 255, 0.5);
+}
+
+/* Add a class to hide the cursor when typing is complete */
+.protocol-body code.typing-complete::after {
+  display: none; /* Hide the blinking cursor */
+}
+
+
+/* --- Navigation Bar Styling --- */
+.main-nav {
+    position: fixed; /* Stick to the top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background-color: rgba(13, 13, 26, 0.8); /* Dark background with transparency */
+    backdrop-filter: blur(10px); /* Frosted glass effect */
+    border-bottom: 1px solid #4a4a6a;
+    z-index: 100; /* Ensure it's above all other content */
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #ffffff;
+    text-decoration: none;
+    text-shadow: 0 0 8px rgba(0, 255, 255, 0.7); /* Cyan glow */
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-link {
+    font-size: 1.1rem;
+    color: #a0a0c0; /* Muted lavender */
+    text-decoration: none;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.nav-link.active {
+    color: #00ffff; /* Bright cyan for the active page */
+    font-weight: bold;
+}
+
+
+/* --- Static Content Page Styling (.content-page) --- */
+.content-page {
+    /* Centering and Sizing */
+    width: 90%;
+    max-width: 900px; /* Limit width for readability */
+    margin: 10rem auto 4rem auto; /* Top margin pushes it below the nav, auto centers horizontally */
+    
+    /* Appearance */
+    background-color: rgba(25, 25, 40, 0.85);
+    border: 1px solid #4a4a6a;
+    border-radius: 8px;
+    padding: 2rem 3rem; /* Generous padding */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.content-page h1 {
+    font-size: 2.8rem;
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #4a4a6a;
+    padding-bottom: 1rem;
+}
+
+.content-page h2 {
+    font-size: 2rem;
+    color: #e0e0e0;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.content-page p {
+    font-size: 1.1rem;
+    line-height: 1.7; /* Improve readability */
+    color: #a0a0c0;
+    margin-bottom: 1rem;
+}
+
+.content-page a {
+    color: #ff00ff; /* Magenta for links */
+    text-decoration: none;
+    transition: text-shadow 0.3s;
+}
+
+.content-page a:hover {
+    text-decoration: underline;
+    text-shadow: 0 0 8px #ff00ff;
+}
+
+.contact-info {
+    margin-top: 2rem;
+}
+
+.contact-info p {
+    font-size: 1.2rem;
+}
